@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <form method="post" action="/ejs"  style="text-align: center;">
+
+            <h1>Heloo EJS</h1>
+    
+            <input type="text" name="name" id="" > <br><br>
+            <input type="submit" name="submit" value="submit" id="">
+        </form> <br>
+
+
+        <p><a href="/viewall">1. View All Task</a> </p>
+        <p><a href="/runningtask">2. Running  Task</a> </p>
+        <p><a href="/pendingtask">3. pending  Task</a> </p>
+        <p><a href="/Completedtask">3. Completed  Task</a> </p>
+        <p><a href="/Declinetask">4. decline  Task</a> </p>
+
+
+        <table border style="margin: auto; width: 65%; text-align: center; margin-top: 30px;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>status</th>
+                <th>Delete</th>
+                <th>edit</th>
+                <th>Running Task</th>
+                <th>pending Task</th>
+                <th>Completed Task</th>
+                <th>Decline Task</th>
+            </tr>
+
+            <% result.forEach(function(table1){ %>
+            <tr>
+                <td><%= table1.id %></td>
+                <td><%= table1.name %></td>
+                <td><%= table1.status %> </td>
+                <td><a href="/delete/<%= table1.id %>">Delete</a></td>
+                <td><a href="/edit/<%= table1.id %>">Edit</a></td>
+                <td><a href="/running/<%= table1.id %>">Running</a></td>
+                <td><a href="/completed/<%= table1.id %>">completed</a></td>
+                <td><a href="/pending/<%= table1.id %>">pending</a></td>
+                <td><a href="/decline/<%= table1.id %>">decline</a></td>
+            </tr>
+            <% })%>
+        </table>
+    </body>
+</html>
